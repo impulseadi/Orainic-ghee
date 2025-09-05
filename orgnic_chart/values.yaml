@@ -8,7 +8,7 @@ name: c-1
 
 image:
   repository: adi0901/organic
-  tag: v3
+  tag: latest
 
 containerPort: 5656
 
