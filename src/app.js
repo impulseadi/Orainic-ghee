@@ -25,17 +25,14 @@ app.set("views",'views')
 //app.set("views","")
 hbs.registerPartials('views/partials')
 
-mongoose.connect("mongodb://mongodb:27017/restorent", {
+// MongoDB connection
+const mongoUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/restorent";
+mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
+}, () => {
+    console.log("MongoDB connected..");
 })
-
-
-// Local
-mongoose.connect("mongodb://127.0.0.1/restorent",()=>{
-    console.log("Server connected..");
-})
-
 
 app.listen(5656,()=>{
     console.log('server is start..')
