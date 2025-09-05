@@ -25,16 +25,17 @@ app.set("views",'views')
 //app.set("views","")
 hbs.registerPartials('views/partials')
 
+mongoose.connect("mongodb://mongodb:27017/restorent", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
 
-
-
-
-mongoose.connect(
-  process.env.MONGO_URI || "mongodb://organic-release-mongodb.adi.svc.cluster.local:27017/restorent",
-  { useNewUrlParser: true, useUnifiedTopology: true }
-)
-.then(() => console.log("Server connected.."))
-.catch(err => console.error("MongoDB connection error:", err));
+/*
+// Local
+mongoose.connect("mongodb://127.0.0.1/restorent",()=>{
+    console.log("Server connected..");
+})
+*/
 
 app.listen(5656,()=>{
     console.log('server is start..')
