@@ -2,22 +2,16 @@ namespace: adi
 labels:
   app: organic-ghee
 replicas: 2
-
-# container
-name: cont-1
+name: c-1
 image:
   repository: adi0901/organic
   tag: v1
 
 containerPort: 5656
-
-# service
 service:
   type: LoadBalancer
-  port: 5656
+  port: 80
   targetPort: 5656
-
-# mongodb
 mongodb:
   labels:
     app: mongodb
