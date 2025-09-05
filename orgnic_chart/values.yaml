@@ -1,0 +1,10 @@
+namespace: adi
+replicas: 2
+labels:
+  app: adi-ipl
+name: c-1
+image:
+  repository: adi0901/organic
+  tag: v1
+containerPort: 5656   # Container port
+servicePort: 80       # External port
