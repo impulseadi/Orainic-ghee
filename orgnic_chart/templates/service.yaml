@@ -6,8 +6,9 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: {{ .Values.labels.app }}
+    app: {{ .Values.app.labels.app }}
   ports:
     - protocol: TCP
-      port: {{ .Values.servicePort }}     # External port
-      targetPort: {{ .Values.containerPort }}  # Container port
+      port: 80        # External access port
+      targetPort: {{ .Values.app.port }}
+

@@ -1,10 +1,27 @@
 namespace: adi
-replicas: 2
-labels:
-  app: adi-ipl
-name: c-1
-image:
-  repository: adi0901/organic
-  tag: v1
-containerPort: 5656   # Container port
-servicePort: 80       # External port
+
+# App config
+app:
+  name: c-1
+  image:
+    repository: adi0901/organic
+    tag: v1
+  port: 5656
+  replicas: 2
+  labels:
+    app: adi-ipl
+
+# MongoDB config
+mongodb:
+  replicas: 1
+  name: mongodb
+  labels:
+    app: mongodb
+  image:
+    repository: mongo
+    tag: 7.0.5
+  port: 27017
+  servicePort: 27017
+  username: admin
+  password: admin123
+  dbName: restorent
