@@ -30,12 +30,12 @@ mongoose.connect("mongodb://mongodb:27017/restorent", {
     useUnifiedTopology: true
 })
 
-/*
+
 // Local
 mongoose.connect("mongodb://127.0.0.1/restorent",()=>{
     console.log("Server connected..");
 })
-*/
+
 
 app.listen(5656,()=>{
     console.log('server is start..')
