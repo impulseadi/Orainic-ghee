@@ -1,17 +1,22 @@
 namespace: adi
+
 labels:
   app: organic-ghee
+
 replicas: 2
 name: c-1
+
 image:
   repository: adi0901/organic
-  tag: v2
+  tag: v3
 
 containerPort: 5656
+
 service:
   type: LoadBalancer
   port: 80
   targetPort: 5656
+
 mongodb:
   labels:
     app: mongodb
@@ -24,4 +29,5 @@ mongodb:
   type: ClusterIP
 
 env:
-  MONGO_URI: mongodb://organic-release-mongodb.adi.svc.cluster.local:27017/restorent
+  # For Kubernetes deployment, point to the MongoDB service inside the cluster
+  MONGO_URI: mongodb://{{ .Release.Name }}-mongodb.{{ .Release.Namespace }}.svc.cluster.local:27017/restorent
