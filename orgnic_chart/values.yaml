@@ -22,3 +22,6 @@ mongodb:
     tag: latest
   containerPort: 27017
   type: ClusterIP
+
+env:
+  MONGO_URI: mongodb://organic-release-mongodb.adi.svc.cluster.local:27017/restorent

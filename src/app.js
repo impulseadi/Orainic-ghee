@@ -29,9 +29,13 @@ hbs.registerPartials('views/partials')
 
 
 
-mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1/restorent", () => {
-    console.log("Server connected..");
-});
+mongoose.connect(
+  process.env.MONGO_URI || "mongodb://organic-release-mongodb.adi.svc.cluster.local:27017/restorent",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+)
+.then(() => console.log("Server connected.."))
+.catch(err => console.error("MongoDB connection error:", err));
+
 app.listen(5656,()=>{
     console.log('server is start..')
 })
