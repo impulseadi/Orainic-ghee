@@ -18,3 +18,6 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: {{ .Values.containerPort }}
+          env:
+            - name: MONGO_URI
+              value: "mongodb://{{ .Release.Name }}-mongodb:27017/restorent"
