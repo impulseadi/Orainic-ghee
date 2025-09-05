@@ -5,7 +5,7 @@ replicas: 2
 name: c-1
 image:
   repository: adi0901/organic
-  tag: v1
+  tag: v2
 
 containerPort: 5656
 service:
