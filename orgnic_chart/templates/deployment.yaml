@@ -4,20 +4,17 @@ metadata:
   name: {{ .Release.Name }}-deployment
   namespace: {{ .Values.namespace }}
 spec:
-  replicas: {{ .Values.app.replicas }}
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.app.labels.app }}
+      app: {{ .Values.labels.app }}
   template:
     metadata:
       labels:
-        app: {{ .Values.app.labels.app }}
+        app: {{ .Values.labels.app }}
     spec:
       containers:
-        - name: {{ .Values.app.name }}
-          image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}"
+        - name: {{ .Values.name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: {{ .Values.app.port }}
-          env:
-            - name: MONGO_URL
-              value: "mongodb://{{ .Release.Name }}-mongodb-service:{{ .Values.mongodb.servicePort }}/{{ .Values.mongodb.dbName }}"
+            - containerPort: {{ .Values.containerPort }}

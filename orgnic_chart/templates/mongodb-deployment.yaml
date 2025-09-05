@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}-mongodb
   namespace: {{ .Values.namespace }}
 spec:
-  replicas: {{ .Values.mongodb.replicas }}
+  replicas: {{ .Values.mongodb.replicaCount }}
   selector:
     matchLabels:
       app: {{ .Values.mongodb.labels.app }}
@@ -17,11 +17,4 @@ spec:
         - name: {{ .Values.mongodb.name }}
           image: "{{ .Values.mongodb.image.repository }}:{{ .Values.mongodb.image.tag }}"
           ports:
-            - containerPort: {{ .Values.mongodb.port }}
-          env:
-            - name: MONGO_INITDB_ROOT_USERNAME
-              value: {{ .Values.mongodb.username }}
-            - name: MONGO_INITDB_ROOT_PASSWORD
-              value: {{ .Values.mongodb.password }}
-            - name: MONGO_INITDB_DATABASE
-              value: {{ .Values.mongodb.dbName }}
+            - containerPort: {{ .Values.mongodb.containerPort }}

@@ -4,11 +4,10 @@ metadata:
   name: {{ .Release.Name }}-service
   namespace: {{ .Values.namespace }}
 spec:
-  type: LoadBalancer
   selector:
-    app: {{ .Values.app.labels.app }}
+    app: {{ .Values.labels.app }}
   ports:
     - protocol: TCP
-      port: 80        # External access port
-      targetPort: {{ .Values.app.port }}
-
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+  type: {{ .Values.service.type }}

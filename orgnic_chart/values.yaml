@@ -1,27 +1,30 @@
 namespace: adi
+labels:
+  app: organic-ghee
+replicas: 2
 
-# App config
-app:
-  name: c-1
-  image:
-    repository: adi0901/organic
-    tag: v1
+# container
+name: cont-1
+image:
+  repository: adi0901/organic
+  tag: v1
+
+containerPort: 5656
+
+# service
+service:
+  type: LoadBalancer
   port: 5656
-  replicas: 2
-  labels:
-    app: adi-ipl
+  targetPort: 5656
 
-# MongoDB config
+# mongodb
 mongodb:
-  replicas: 1
-  name: mongodb
   labels:
     app: mongodb
+  replicaCount: 1
+  name: mongodb
   image:
     repository: mongo
-    tag: 7.0.5
-  port: 27017
-  servicePort: 27017
-  username: admin
-  password: admin123
-  dbName: restorent
+    tag: latest
+  containerPort: 27017
+  type: ClusterIP
